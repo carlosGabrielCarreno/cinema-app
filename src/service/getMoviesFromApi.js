@@ -5,7 +5,7 @@ const options = {
   url: 'https://online-movie-database.p.rapidapi.com/auto-complete',
   params: { q: 'matrix' },
   headers: {
-    'X-RapidAPI-Key': '2a1ac7f37fmsh884d7983739f522p157da4jsnb35d0ace1ca0',
+    'X-RapidAPI-Key': import.meta.env.VITE_APP_API_KEY,
     'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com',
   },
 };
