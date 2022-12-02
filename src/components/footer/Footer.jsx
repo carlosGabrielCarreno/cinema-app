@@ -6,6 +6,7 @@ import './footer.scss';
 export const Footer = () => {
   return (
     <div className="footer">
+      <hr />
       <div className="container-social-media">
         <FacebookIcon />
         <InstagramIcon />

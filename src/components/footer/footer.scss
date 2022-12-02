@@ -12,6 +12,10 @@
     display: flex;
     gap: 0.5rem;
   }
+  & hr {
+    width: 100%;
+    border: 1px solid var(--primary-Pale-blue);
+  }
 }
 
 .footer h5 {
