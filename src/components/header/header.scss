@@ -1,0 +1,14 @@
+.headerContainer {
+  grid-area: headerContainer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* border: solid lawngreen; */
+}
+
+.title-icon {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+}

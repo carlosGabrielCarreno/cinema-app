@@ -15,8 +15,12 @@ const MoviesProvider = ({ children }) => {
           setIsLoading(true);
           setIsError(false);
           const movies = await searchMovies('matrix');
-          setMovies(movies);
-          setIsLoading(false);
+          if (movies.length) {
+            setMovies(movies);
+            setIsLoading(false);
+          } else {
+            throw new Error('Movies not found');
+          }
         } catch (error) {
           setIsLoading(false);
           setIsError(true);
@@ -29,8 +33,13 @@ const MoviesProvider = ({ children }) => {
           setIsLoading(true);
           setIsError(false);
           const movies = await searchMovies(searchTerm);
-          setMovies(movies);
-          setIsLoading(false);
+          console.log(movies);
+          if (movies.length) {
+            setMovies(movies);
+            setIsLoading(false);
+          } else {
+            throw new Error('Movies not found');
+          }
         } catch (error) {
           setIsLoading(false);
           setIsError(true);

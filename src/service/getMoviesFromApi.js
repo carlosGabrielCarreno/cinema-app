@@ -14,7 +14,6 @@ export const getMoviesFromApi = async (title = 'matrix') => {
   options.params = { q: title };
   try {
     const { data } = await axios.request(options);
-    console.log('hola', data);
     if (data.d) {
       return data.d;
     } else {

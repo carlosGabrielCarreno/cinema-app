@@ -1,11 +1,14 @@
 import './app.scss';
-import { Cards, Navbar } from './components';
+import { Cards, Footer, Header, Navbar, Sidebar } from './components';
 
 export const App = () => {
   return (
     <div className="app">
-      <Navbar />
+      <Header />
+      {/* <Navbar /> */}
+      <Sidebar />
       <Cards />
+      <Footer />
     </div>
   );
 };
