@@ -8,22 +8,19 @@ const MoviesProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const { counter, decrement, increment, reset } = useCounter();
   const { data, hasError, isLoading } = useFetch(
-    import.meta.env.VITE_APP_URL_API +
-      import.meta.env.VITE_APP_API_KEY +
-      '&page=' +
-      counter
+    searchTerm.length > 1
+      ? import.meta.env.VITE_APP_URL_SEARCH +
+          searchTerm +
+          '&api_key=' +
+          import.meta.env.VITE_APP_API_KEY +
+          '&page=' +
+          counter
+      : import.meta.env.VITE_APP_URL_API +
+          '?api_key=' +
+          import.meta.env.VITE_APP_API_KEY +
+          '&page=' +
+          counter
   );
-
-  /* useEffect(() => {
-    const getMovies = async () => {
-      setIsLoading(true);
-      setIsError(false);
-      const movies = await getMoviesFromApi();
-      setMovies(movies);
-      setIsLoading(false);
-    };
-    getMovies();
-  }, []); */
 
   // useEffect(() => {
   //   if (!searchTerm) {
