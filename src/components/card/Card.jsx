@@ -5,7 +5,7 @@ export const Card = (props) => {
   return (
     <div className="container-card">
       <div className="container-img">
-        <img src={img?.imageUrl} alt={title} />
+        <img src={'https://image.tmdb.org/t/p/w300' + img} alt={title} />
       </div>
       <h3>{title}</h3>
     </div>

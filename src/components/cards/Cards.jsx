@@ -6,17 +6,24 @@ import { ErrorMessage } from '../error/ErrorMessage';
 import './cards.scss';
 
 export const Cards = () => {
-  const { movies, isError } = useContext(MoviesContext);
+  const { data, hasError } = useContext(MoviesContext);
+  console.log(data?.results);
   return (
     <div className="main">
-      {isError ? (
+      {hasError ? (
         <>
           <ErrorMessage />
         </>
       ) : (
         <>
-          {movies?.map((movie) => {
-            return <Card key={movie.id} title={movie?.l} img={movie?.i} />;
+          {data.results?.map((movie) => {
+            return (
+              <Card
+                key={movie.id}
+                title={movie?.original_title}
+                img={movie?.poster_path}
+              />
+            );
           })}
         </>
       )}
