@@ -16,7 +16,7 @@ export const Cards = () => {
         </>
       ) : (
         <>
-          {data.results?.map((movie) => {
+          {data?.results.map((movie) => {
             return (
               <Card
                 key={movie.id}
