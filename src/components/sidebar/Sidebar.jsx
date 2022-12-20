@@ -1,35 +1,46 @@
-import BorderAllOutlinedIcon from '@mui/icons-material/BorderAllOutlined';
-import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
+import UpcomingIcon from '@mui/icons-material/Upcoming';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import './sidebar.scss';
 import { MoviesContext } from '../../context/MoviesContext';
 import { useContext } from 'react';
 
 export const Sidebar = () => {
-  const { setSearchTerm } = useContext(MoviesContext);
+  const {
+    topRated,
+    setTopRated,
+    nowPlaying,
+    setNowPlaying,
+    upcoming,
+    setUpcoming,
+  } = useContext(MoviesContext);
 
-  const handleSetDiscover = () => {
-    setSearchTerm('');
+  const handleTopRated = () => {
+    setTopRated(!topRated);
+  };
+
+  const handleNowPlaying = () => {
+    setNowPlaying(!nowPlaying);
+  };
+
+  const handleUpcoming = () => {
+    setUpcoming(!upcoming);
   };
 
   return (
     <div className="sidebar">
-      <button onClick={handleSetDiscover}>
-        <BorderAllOutlinedIcon />
-        <span>Discover</span>
-      </button>
-      <div>
-        <GradeOutlinedIcon />
-        <span>Favorite</span>
-      </div>
-      <div>
+      <button onClick={handleTopRated}>
         <FavoriteBorderOutlinedIcon />
-        <span>Liked</span>
-      </div>
-      <div>
-        <BorderAllOutlinedIcon />
-        <span>Genres</span>
-      </div>
+        <span>Top Rated</span>
+      </button>
+      <button onClick={handleNowPlaying}>
+        <OpenInNewIcon />
+        <span>Now Playing</span>
+      </button>
+      <button onClick={handleUpcoming}>
+        <UpcomingIcon />
+        <span>Upcoming</span>
+      </button>
     </div>
   );
 };

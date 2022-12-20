@@ -6,11 +6,11 @@ import './index.scss';
 import { MoviesProvider } from './context/MoviesProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <MoviesProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </MoviesProvider>
-  </React.StrictMode>
+  //<React.StrictMode>
+  <MoviesProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </MoviesProvider>
+  //</React.StrictMode>
 );

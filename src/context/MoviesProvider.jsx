@@ -1,67 +1,76 @@
 import { useContext, useEffect, useState } from 'react';
-import { searchMovies } from '../API';
 import { useCounter, useFetch } from '../hooks';
-import { getMoviesFromApi } from '../service';
 import { MoviesContext } from './MoviesContext';
 
 const MoviesProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const { counter, decrement, increment, reset } = useCounter();
-  const { data, hasError, isLoading } = useFetch(
-    searchTerm.length > 1
-      ? import.meta.env.VITE_APP_URL_SEARCH +
+  const [topRated, setTopRated] = useState(false);
+  const [nowPlaying, setNowPlaying] = useState(false);
+  const [upcoming, setUpcoming] = useState(false);
+  const [path, setPath] = useState(
+    import.meta.env.VITE_APP_URL_API +
+      'api_key=' +
+      import.meta.env.VITE_APP_API_KEY +
+      '&page=' +
+      counter
+  );
+
+  useEffect(() => {
+    if (searchTerm.length > 1) {
+      reset();
+      setPath(
+        import.meta.env.VITE_APP_URL_SEARCH +
           searchTerm +
           '&api_key=' +
           import.meta.env.VITE_APP_API_KEY +
           '&page=' +
           counter
-      : import.meta.env.VITE_APP_URL_API +
-          '?api_key=' +
+      );
+    }
+  }, [searchTerm]);
+
+  useEffect(() => {
+    if (topRated === true) {
+      reset();
+      setPath(
+        import.meta.env.VITE_APP_TOP_RATED +
+          'api_key=' +
           import.meta.env.VITE_APP_API_KEY +
           '&page=' +
           counter
-  );
+      );
+    }
+  }, [topRated]);
 
-  // useEffect(() => {
-  //   if (!searchTerm) {
-  //     const movies = async () => {
-  //       try {
-  //         setIsLoading(true);
-  //         setIsError(false);
-  //         const movies = await searchMovies('matrix');
-  //         if (movies.length) {
-  //           setMovies(movies);
-  //           setIsLoading(false);
-  //         } else {
-  //           throw new Error('Movies not found');
-  //         }
-  //       } catch (error) {
-  //         setIsLoading(false);
-  //         setIsError(true);
-  //       }
-  //     };
-  //     movies();
-  //   } else {
-  //     const movies = async () => {
-  //       try {
-  //         setIsLoading(true);
-  //         setIsError(false);
-  //         const movies = await searchMovies(searchTerm);
-  //         console.log(movies);
-  //         if (movies.length) {
-  //           setMovies(movies);
-  //           setIsLoading(false);
-  //         } else {
-  //           throw new Error('Movies not found');
-  //         }
-  //       } catch (error) {
-  //         setIsLoading(false);
-  //         setIsError(true);
-  //       }
-  //     };
-  //     movies();
-  //   }
-  // }, [searchTerm]);
+  useEffect(() => {
+    if (nowPlaying) {
+      reset();
+      setPath(
+        import.meta.env.VITE_APP_NOW_PLAYING +
+          'api_key=' +
+          import.meta.env.VITE_APP_API_KEY +
+          '&page=' +
+          counter
+      );
+    }
+  }, [nowPlaying]);
+
+  useEffect(() => {
+    if (upcoming) {
+      reset();
+      setPath(
+        import.meta.env.VITE_APP_UPCOMING +
+          'api_key=' +
+          import.meta.env.VITE_APP_API_KEY +
+          '&page=' +
+          counter
+      );
+    }
+  }, [upcoming]);
+
+  console.log(path);
+  const { data, hasError, isLoading } = useFetch(path);
 
   return (
     <MoviesContext.Provider
@@ -74,6 +83,12 @@ const MoviesProvider = ({ children }) => {
         decrement,
         increment,
         reset,
+        topRated,
+        setTopRated,
+        nowPlaying,
+        setNowPlaying,
+        upcoming,
+        setUpcoming,
       }}
     >
       {children}
