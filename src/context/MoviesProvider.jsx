@@ -108,7 +108,7 @@ const MoviesProvider = ({ children }) => {
             '?api_key=' +
             import.meta.env.VITE_APP_API_KEY
         );
-        console.log(data);
+        /* console.log(data); */
         setDataMovieDetail(data);
         setIsLoading(false);
       } catch (error) {

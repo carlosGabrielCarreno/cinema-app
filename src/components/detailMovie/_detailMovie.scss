@@ -1,0 +1,32 @@
+.container-detail-movie {
+  border: solid red;
+  width: 90%;
+  height: 100vh;
+  margin: 0 auto;
+
+  & .container-btn-home {
+    color: #fff;
+    margin: 0.3rem;
+    padding: 7px;
+    background-color: var(--primary-Pale-blue);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+  }
+  & .img-detail-movie {
+    width: 100%;
+  }
+  & h2 {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  & .overview {
+    padding: 0.2rem;
+    text-align: justify;
+    & span {
+      font-weight: 800;
+      text-transform: capitalize;
+    }
+  }
+}
