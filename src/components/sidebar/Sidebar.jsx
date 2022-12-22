@@ -29,15 +29,15 @@ export const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <button onClick={handleTopRated}>
+      <button className="btn-sidebar" onClick={handleTopRated}>
         <FavoriteBorderOutlinedIcon />
         <span>Top Rated</span>
       </button>
-      <button onClick={handleNowPlaying}>
+      <button className="btn-sidebar" onClick={handleNowPlaying}>
         <OpenInNewIcon />
         <span>Now Playing</span>
       </button>
-      <button onClick={handleUpcoming}>
+      <button className="btn-sidebar" onClick={handleUpcoming}>
         <UpcomingIcon />
         <span>Upcoming</span>
       </button>
