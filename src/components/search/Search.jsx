@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../context/MoviesProvider';
+import { FaSistrix } from 'react-icons/fa';
 import './_search.scss';
 
 export const Search = () => {
@@ -22,6 +23,9 @@ export const Search = () => {
           setTerm(e.target.value);
         }}
       />
+      <div className="sistrix">
+        <FaSistrix size={20} />
+      </div>
     </form>
   );
 };

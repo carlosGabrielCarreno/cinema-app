@@ -6,3 +6,4 @@ export * from './sidebar/Sidebar';
 export * from './footer/Footer';
 export * from './header/Header';
 export * from './spinner/Spinner';
+export * from './detailMovie/DetailMovie';

@@ -29,6 +29,7 @@ export const Cards = () => {
                     key={movie.id}
                     title={movie?.original_title}
                     img={movie?.poster_path}
+                    id={movie.id}
                   />
                 );
               })}

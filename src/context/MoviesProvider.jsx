@@ -12,6 +12,9 @@ const MoviesProvider = ({ children }) => {
   const [topRated, setTopRated] = useState(false);
   const [nowPlaying, setNowPlaying] = useState(false);
   const [upcoming, setUpcoming] = useState(false);
+  const [idMovieDetail, setIdMovieDetail] = useState('');
+  const [dataMovieDetail, setDataMovieDetail] = useState();
+
   const [path, setPath] = useState(
     import.meta.env.VITE_APP_URL_API +
       'api_key=' +
@@ -25,7 +28,7 @@ const MoviesProvider = ({ children }) => {
       setHasError(false);
       setIsLoading(true);
       const { data } = await axios.get(path);
-      console.log(data);
+      /* console.log(data); */
       setData(data);
       setIsLoading(false);
     } catch (error) {
@@ -94,6 +97,29 @@ const MoviesProvider = ({ children }) => {
     call();
   }, [path]);
 
+  useEffect(() => {
+    const getDetailMovie = async (id) => {
+      try {
+        setHasError(false);
+        setIsLoading(true);
+        const { data } = await axios.get(
+          import.meta.env.VITE_APP_DETAIL_MOVIE +
+            id +
+            '?api_key=' +
+            import.meta.env.VITE_APP_API_KEY
+        );
+        console.log(data);
+        setDataMovieDetail(data);
+        setIsLoading(false);
+      } catch (error) {
+        setHasError(true);
+      }
+    };
+    if (idMovieDetail.length > 1) {
+      getDetailMovie(idMovieDetail);
+    }
+  }, [idMovieDetail]);
+
   return (
     <MoviesContext.Provider
       value={{
@@ -111,6 +137,8 @@ const MoviesProvider = ({ children }) => {
         setNowPlaying,
         upcoming,
         setUpcoming,
+        dataMovieDetail,
+        setIdMovieDetail,
       }}
     >
       {children}
