@@ -3,21 +3,24 @@ import { MoviesContext } from '../../context/MoviesContext';
 import { useGlobalContext } from '../../context/MoviesProvider';
 import { Card } from '../card/Card';
 import { ErrorMessage } from '../error/ErrorMessage';
+import { Spinner } from '../spinner/Spinner';
 import './cards.scss';
 
 export const Cards = () => {
   const { data, hasError, isLoading } = useContext(MoviesContext);
 
   return (
-    <div className="main">
-      {hasError ? (
+    <>
+      {isLoading ? (
         <>
-          <ErrorMessage />
+          <Spinner />
         </>
       ) : (
-        <>
-          {isLoading ? (
-            <h1>loading</h1>
+        <div className="main">
+          {hasError ? (
+            <>
+              <ErrorMessage />
+            </>
           ) : (
             <>
               {data?.results.map((movie) => {
@@ -31,8 +34,8 @@ export const Cards = () => {
               })}
             </>
           )}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };

@@ -1,0 +1,14 @@
+.container-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 66vh;
+  & .spinning {
+    animation: spinner 1s linear infinite;
+  }
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,7 +1,7 @@
 .container-card {
   /*  border: solid blueviolet; */
   height: 100%;
-
+  cursor: pointer;
   //
   animation: fadeIn ease 0.8s;
   -webkit-animation: fadeIn ease 0.8s;
@@ -52,6 +52,9 @@
     100% {
       opacity: 1;
     }
+  }
+  &:hover {
+    opacity: 0.8;
   }
 }
 
