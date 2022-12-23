@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { MoviesContext } from '../../context/MoviesContext';
 import { Spinner } from '../spinner/Spinner';
 import HomeIcon from '@mui/icons-material/Home';
@@ -9,12 +9,7 @@ import { Footer } from '../footer/Footer';
 export const DetailMovie = () => {
   const { dataMovieDetail, setIdMovieDetail, isLoading } =
     useContext(MoviesContext);
-
-  const navigate = useNavigate();
   const { id } = useParams();
-
-  console.log(dataMovieDetail);
-
   useEffect(() => {
     setIdMovieDetail(id);
   }, []);

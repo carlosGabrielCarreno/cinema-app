@@ -72,9 +72,6 @@
         flex-direction: column;
         width: 50%;
         height: 60%;
-        & .genres {
-          justify-content: space-between;
-        }
       }
     }
   }
@@ -115,7 +112,7 @@
   }
   & .genres {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin: 1rem 0;
     & li {

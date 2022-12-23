@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { useCounter, useFetch } from '../hooks';
+import { useCounter } from '../hooks';
 import { MoviesContext } from './MoviesContext';
 
 const MoviesProvider = ({ children }) => {
@@ -28,7 +28,7 @@ const MoviesProvider = ({ children }) => {
       setHasError(false);
       setIsLoading(true);
       const { data } = await axios.get(path);
-      /* console.log(data); */
+
       setData(data);
       setIsLoading(false);
     } catch (error) {
@@ -55,7 +55,6 @@ const MoviesProvider = ({ children }) => {
   }, [searchTerm]);
 
   useEffect(() => {
-    /* if (topRated === true) { */
     reset();
     setPath(
       import.meta.env.VITE_APP_TOP_RATED +
@@ -64,11 +63,9 @@ const MoviesProvider = ({ children }) => {
         '&page=' +
         counter
     );
-    /* } */
   }, [topRated]);
 
   useEffect(() => {
-    /* if (nowPlaying) { */
     reset();
     setPath(
       import.meta.env.VITE_APP_NOW_PLAYING +
@@ -77,11 +74,9 @@ const MoviesProvider = ({ children }) => {
         '&page=' +
         counter
     );
-    /* } */
   }, [nowPlaying]);
 
   useEffect(() => {
-    /* if (upcoming) { */
     reset();
     setPath(
       import.meta.env.VITE_APP_UPCOMING +
@@ -90,7 +85,6 @@ const MoviesProvider = ({ children }) => {
         '&page=' +
         counter
     );
-    /* } */
   }, [upcoming]);
 
   useEffect(() => {
@@ -108,7 +102,7 @@ const MoviesProvider = ({ children }) => {
             '?api_key=' +
             import.meta.env.VITE_APP_API_KEY
         );
-        /* console.log(data); */
+
         setDataMovieDetail(data);
         setIsLoading(false);
       } catch (error) {
