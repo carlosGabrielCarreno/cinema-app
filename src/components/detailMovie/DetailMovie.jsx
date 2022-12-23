@@ -42,8 +42,24 @@ export const DetailMovie = () => {
               <h2>{dataMovieDetail?.original_title}</h2>
               <p className="overview">
                 {' '}
-                <span>overview: </span> {dataMovieDetail.overview}
+                <span>overview: </span> {dataMovieDetail?.overview}
               </p>
+              <ul className="info-list">
+                <li>
+                  <span>vote average:</span> {dataMovieDetail?.vote_average}
+                </li>
+                <li>
+                  <span>release date:</span> {dataMovieDetail?.release_date}
+                </li>
+                <li>
+                  <span>popularity:</span> {dataMovieDetail?.popularity}
+                </li>
+              </ul>
+              <ul className="genres">
+                {dataMovieDetail?.genres.map(({ id, name }) => (
+                  <li key={id}>{name}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </>
