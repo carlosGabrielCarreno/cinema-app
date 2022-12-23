@@ -11,7 +11,7 @@ export const Cards = () => {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && !hasError ? (
         <>
           <Spinner />
         </>

@@ -29,6 +29,7 @@ const MoviesProvider = ({ children }) => {
       setIsLoading(true);
       const { data } = await axios.get(path);
 
+      if (!data.results.length) throw new Error(data);
       setData(data);
       setIsLoading(false);
     } catch (error) {
