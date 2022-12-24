@@ -1,0 +1,35 @@
+.container-pagination {
+  grid-area: pagination;
+  /* border: solid red; */
+  height: 100%;
+  & .container-btns {
+    /* border: solid green; */
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    & .pagination-btn,
+    .value-pagination {
+      padding: 0.4rem;
+      color: #fff;
+      border: 0;
+      background-color: var(--primary-Pale-blue);
+    }
+    & .pagination-btn {
+      cursor: pointer;
+    }
+    & .value-pagination {
+      padding: 1rem;
+      /* height: 100%; */
+      display: flex;
+      align-items: center;
+      border-radius: 5%;
+    }
+  }
+  & .pagination-btn:hover {
+    opacity: 0.8;
+  }
+}
