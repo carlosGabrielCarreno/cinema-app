@@ -21,6 +21,13 @@
     & .pagination-btn {
       cursor: pointer;
     }
+    & .disable-next {
+      //
+    }
+    & .disable {
+      opacity: 0.8;
+      cursor: default;
+    }
     & .value-pagination {
       padding: 1rem;
       /* height: 100%; */

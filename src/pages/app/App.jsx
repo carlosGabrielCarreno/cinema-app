@@ -1,5 +1,5 @@
 import './app.scss';
-import { Cards, Footer, Header, Pagination, Sidebar } from '../../components';
+import { Cards, Footer, Header, Sidebar, Pagination } from '../../components';
 
 export const App = () => {
   return (

@@ -8,7 +8,8 @@ const MoviesProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const { counter, decrement, increment, reset } = useCounter();
+  const { counter, decrement, increment, reset } = useCounter(1);
+  const [totalPagesMovies, setTotalPagesMovies] = useState(1);
   const [topRated, setTopRated] = useState(false);
   const [nowPlaying, setNowPlaying] = useState(false);
   const [upcoming, setUpcoming] = useState(false);
@@ -18,24 +19,26 @@ const MoviesProvider = ({ children }) => {
   const [path, setPath] = useState(
     import.meta.env.VITE_APP_URL_API +
       'api_key=' +
-      import.meta.env.VITE_APP_API_KEY +
-      '&page=' +
-      counter
+      import.meta.env.VITE_APP_API_KEY
   );
 
   const call = async () => {
     try {
       setHasError(false);
       setIsLoading(true);
-      const { data } = await axios.get(path);
-
+      const { data } = await axios.get(path + '&page=' + counter);
       if (!data.results.length) throw new Error(data);
       setData(data);
+      setTotalPagesMovies(data.total_pages);
       setIsLoading(false);
     } catch (error) {
       setHasError(true);
     }
   };
+
+  useEffect(() => {
+    call();
+  }, [counter]);
 
   useEffect(() => {
     call();
@@ -48,9 +51,7 @@ const MoviesProvider = ({ children }) => {
         import.meta.env.VITE_APP_URL_SEARCH +
           searchTerm +
           '&api_key=' +
-          import.meta.env.VITE_APP_API_KEY +
-          '&page=' +
-          counter
+          import.meta.env.VITE_APP_API_KEY
       );
     }
   }, [searchTerm]);
@@ -60,9 +61,7 @@ const MoviesProvider = ({ children }) => {
     setPath(
       import.meta.env.VITE_APP_TOP_RATED +
         'api_key=' +
-        import.meta.env.VITE_APP_API_KEY +
-        '&page=' +
-        counter
+        import.meta.env.VITE_APP_API_KEY
     );
   }, [topRated]);
 
@@ -71,9 +70,7 @@ const MoviesProvider = ({ children }) => {
     setPath(
       import.meta.env.VITE_APP_NOW_PLAYING +
         'api_key=' +
-        import.meta.env.VITE_APP_API_KEY +
-        '&page=' +
-        counter
+        import.meta.env.VITE_APP_API_KEY
     );
   }, [nowPlaying]);
 
@@ -82,9 +79,7 @@ const MoviesProvider = ({ children }) => {
     setPath(
       import.meta.env.VITE_APP_UPCOMING +
         'api_key=' +
-        import.meta.env.VITE_APP_API_KEY +
-        '&page=' +
-        counter
+        import.meta.env.VITE_APP_API_KEY
     );
   }, [upcoming]);
 
@@ -123,6 +118,7 @@ const MoviesProvider = ({ children }) => {
         data,
         hasError,
         isLoading,
+        counter,
         decrement,
         increment,
         reset,
@@ -134,6 +130,7 @@ const MoviesProvider = ({ children }) => {
         setUpcoming,
         dataMovieDetail,
         setIdMovieDetail,
+        totalPagesMovies,
       }}
     >
       {children}

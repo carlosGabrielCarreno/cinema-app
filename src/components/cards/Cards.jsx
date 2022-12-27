@@ -1,9 +1,7 @@
 import { useContext } from 'react';
 import { MoviesContext } from '../../context/MoviesContext';
-import { useGlobalContext } from '../../context/MoviesProvider';
 import { Card } from '../card/Card';
 import { ErrorMessage } from '../error/ErrorMessage';
-import { Pagination } from '../pagination/Pagination';
 import { Spinner } from '../spinner/Spinner';
 import './cards.scss';
 
