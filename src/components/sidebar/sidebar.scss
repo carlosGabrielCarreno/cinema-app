@@ -30,6 +30,11 @@
   @media (min-width: 600px) {
     margin: 0.5rem 0;
   }
+  &.active {
+    opacity: 0.9;
+    cursor: default;
+    color: #ffffff8c;
+  }
 }
 
 .sidebar button span {

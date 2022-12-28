@@ -13,6 +13,7 @@ export const Sidebar = () => {
     setNowPlaying,
     upcoming,
     setUpcoming,
+    sidebarState,
   } = useContext(MoviesContext);
 
   const handleTopRated = () => {
@@ -29,15 +30,26 @@ export const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <button className="btn-sidebar" onClick={handleTopRated}>
+      <button
+        className={`btn-sidebar ${sidebarState === 'topRated' ? 'active' : ''}`}
+        onClick={handleTopRated}
+      >
         <FavoriteBorderOutlinedIcon />
         <span>Top Rated</span>
       </button>
-      <button className="btn-sidebar" onClick={handleNowPlaying}>
+      <button
+        className={`btn-sidebar ${
+          sidebarState === 'nowPlaying' ? 'active' : ''
+        }`}
+        onClick={handleNowPlaying}
+      >
         <OpenInNewIcon />
         <span>Now Playing</span>
       </button>
-      <button className="btn-sidebar" onClick={handleUpcoming}>
+      <button
+        className={`btn-sidebar ${sidebarState === 'upcoming' ? 'active' : ''}`}
+        onClick={handleUpcoming}
+      >
         <UpcomingIcon />
         <span>Upcoming</span>
       </button>

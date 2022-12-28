@@ -15,6 +15,7 @@ const MoviesProvider = ({ children }) => {
   const [upcoming, setUpcoming] = useState(false);
   const [idMovieDetail, setIdMovieDetail] = useState('');
   const [dataMovieDetail, setDataMovieDetail] = useState();
+  const [sidebarState, setSidebarState] = useState('');
 
   const [path, setPath] = useState(
     import.meta.env.VITE_APP_URL_API +
@@ -54,6 +55,7 @@ const MoviesProvider = ({ children }) => {
           import.meta.env.VITE_APP_API_KEY
       );
     }
+    setSidebarState('');
   }, [searchTerm]);
 
   useEffect(() => {
@@ -63,6 +65,7 @@ const MoviesProvider = ({ children }) => {
         'api_key=' +
         import.meta.env.VITE_APP_API_KEY
     );
+    setSidebarState('topRated');
   }, [topRated]);
 
   useEffect(() => {
@@ -72,6 +75,7 @@ const MoviesProvider = ({ children }) => {
         'api_key=' +
         import.meta.env.VITE_APP_API_KEY
     );
+    setSidebarState('nowPlaying');
   }, [nowPlaying]);
 
   useEffect(() => {
@@ -81,6 +85,7 @@ const MoviesProvider = ({ children }) => {
         'api_key=' +
         import.meta.env.VITE_APP_API_KEY
     );
+    setSidebarState('upcoming');
   }, [upcoming]);
 
   useEffect(() => {
@@ -131,6 +136,7 @@ const MoviesProvider = ({ children }) => {
         dataMovieDetail,
         setIdMovieDetail,
         totalPagesMovies,
+        sidebarState,
       }}
     >
       {children}
