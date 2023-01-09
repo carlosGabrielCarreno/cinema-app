@@ -31,6 +31,8 @@ export const Pagination = () => {
           <ArrowLeftIcon fontSize="large" />
         </button>
         <span className="value-pagination">{counter}</span>
+        of
+        <span className="value-pagination">{totalPagesMovies}</span>
         <button
           className={`pagination-btn ${
             counter >= totalPagesMovies ? 'disable' : ''

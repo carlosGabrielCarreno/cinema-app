@@ -8,3 +8,4 @@ export * from './header/Header';
 export * from './spinner/Spinner';
 export * from './detailMovie/DetailMovie';
 export * from './pagination/Pagination';
+export * from './carousel/Carousel';
