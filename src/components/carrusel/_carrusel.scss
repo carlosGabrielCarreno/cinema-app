@@ -1,10 +1,11 @@
 .container-carrusel {
-  /* border: solid red; */
+  /*   border: solid red; */
   width: 100%;
   position: relative;
   overflow: hidden;
   /* border: solid red; */
   height: 100%;
+  margin: 0 auto;
   grid-area: carrusel;
 }
 
@@ -29,14 +30,17 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  width: 4%;
+  width: 8%;
   cursor: pointer;
-  height: 15%;
+  height: 10%;
   color: var(--neutral-Very-pale-blue);
   &.left {
     left: 10px;
+    /* border: solid greenyellow; */
   }
   &.right {
     right: 10px;
+  }
+  @media (min-width: 400px) {
   }
 }
