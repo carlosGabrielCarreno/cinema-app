@@ -1,10 +1,10 @@
 import './_spinner.scss';
-import { FaSpinner } from 'react-icons/fa';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 export const Spinner = () => {
   return (
     <div className="container-spinner">
-      <FaSpinner className="spinning" size={50} />
+      <AiOutlineLoading className="spinning" size={50} />
     </div>
   );
 };

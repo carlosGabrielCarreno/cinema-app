@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import './_carousel.scss';
+import './_carrusel.scss';
 
-export const Carousel = () => {
+export const Carrusel = () => {
   const images = [
     'movie1.png',
     'movie2.png',
     'movie3.jpg',
     'movie4.jpg',
     'movie6.jpg',
-    'movie7.jpg',
+    'movie11.jpg',
   ];
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(images[0]);
@@ -42,15 +42,15 @@ export const Carousel = () => {
     console.log(selectedIndex);
   };
   return (
-    <div className="container-carousel">
-      <button className="arrow-carousel left" onClick={previous}>
+    <div className="container-carrusel">
+      <button className="arrow-carrusel left" onClick={previous}>
         <ArrowBackIosNewIcon fontSize="large" />
       </button>
-      <button className="arrow-carousel right" onClick={nextPage}>
+      <button className="arrow-carrusel right" onClick={nextPage}>
         <ArrowForwardIosIcon fontSize="large" />
       </button>
       <img
-        className={`image-carousel ${loaded ? 'loaded' : ''}`}
+        className={`image-carrusel ${loaded ? 'loaded' : ''}`}
         onLoad={() => setLoaded(true)}
         src={`/src/assets/${selectedImage}`}
         alt=""

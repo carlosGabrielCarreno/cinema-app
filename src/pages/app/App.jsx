@@ -5,14 +5,14 @@ import {
   Header,
   Sidebar,
   Pagination,
-  Carousel,
+  Carrusel,
 } from '../../components';
 
 export const App = () => {
   return (
     <div className="app">
       <Header />
-      <Carousel />
+      <Carrusel />
       <Pagination />
       <Sidebar />
       <Cards />
