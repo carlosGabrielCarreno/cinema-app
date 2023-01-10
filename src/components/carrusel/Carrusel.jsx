@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import movie1 from './assets/movie1.png';
+import movie2 from './assets/movie2.png';
+import movie3 from './assets/movie3.jpg';
+import movie4 from './assets/movie4.jpg';
+import movie6 from './assets/movie6.jpg';
+import movie11 from './assets/movie11.jpg';
+
 import './_carrusel.scss';
 
 export const Carrusel = () => {
-  const images = [
-    'movie1.png',
-    'movie2.png',
-    'movie3.jpg',
-    'movie4.jpg',
-    'movie6.jpg',
-    'movie11.jpg',
-  ];
+  const images = [movie1, movie2, movie3, movie4, movie6, movie11];
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(images[0]);
   const [loaded, setLoaded] = useState(false);
@@ -52,7 +52,7 @@ export const Carrusel = () => {
       <img
         className={`image-carrusel ${loaded ? 'loaded' : ''}`}
         onLoad={() => setLoaded(true)}
-        src={`/src/assets/${selectedImage}`}
+        src={selectedImage}
         alt=""
       />
     </div>
